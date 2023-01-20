@@ -1,27 +1,14 @@
 <template>
   <main>
-    <section class="tasks">
-      <ul>
-        <li v-for="task in tasks" :key="task.id">
-          <task v-if="!task.deleted"
-            :name="task.name"
-            :taskId="task.id"
-            :deleted="false"
-            :id="task.id"
-            @task-removal="removeTask($event)"
-          ></task>
-        </li>
-      </ul>
-    </section>
-    <section class="newTaskForm">
-      <create-new-task @add-task="addNewTask($event)"></create-new-task>
-    </section>
+    <router-view :tasks="tasks" :taskId="id"></router-view>
   </main>
 </template>
 
 <script>
 import Task from "./components/Task.vue"
 import CreateNewTask from "./components/CreateNewTask.vue"
+import Tasks from "./views/Tasks.vue"
+import DeletedTasks from "./views/DeletedTasks.vue"
 
 let id = 0
 
@@ -30,30 +17,24 @@ export default {
   components: {
     Task,
     CreateNewTask,
+    Tasks,
+    DeletedTasks,
   },
   data() {
     return {
       newTask: "",
+      id: id,
       tasks: [
-        { id: ++id, name: "barber", deleted: false},
-        { id: ++id, name: "buy groceries", deleted: false},
-        { id: ++id, name: "buy dogfood", deleted: false},
+        { id: ++id, name: "barber", deleted: false },
+        { id: ++id, name: "buy groceries", deleted: false },
+        { id: ++id, name: "buy dogfood", deleted: false },
       ],
     }
   },
   methods: {
-    addNewTask(taskName) {
-      this.tasks.push({ id: ++id, name: taskName, deleted: false })
-    },
-    removeTask(id) {
-      this.tasks.filter((task) => {
-        if(task.id === id) {
-          task.deleted = true
-        }
-      })
-    },
   },
-  created() {},
+  created() {
+  },
 }
 </script>
 

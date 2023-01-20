@@ -1,24 +1,25 @@
 <template>
   <article>
     <p>{{ name }}</p>
+    <slot></slot>
     <button @click="removeTask()">x</button>
   </article>
 </template>
 
 <script>
 export default {
+  name: "Task",
   props: {
     name: String,
     taskId: Number,
-    deleted: Boolean
+    deleted: Boolean,
   },
   methods: {
     removeTask() {
       this.$emit("task-removal", this.taskId)
     },
   },
-  created() {
-  },
+  created() {},
 }
 </script>
 
@@ -27,7 +28,6 @@ p {
   font-size: 18px;
   margin-right: 20px;
 }
-
 button {
   width: 20px;
   height: 20px;
@@ -43,5 +43,8 @@ button {
     color: whitesmoke;
     //   transform: scale(1.1);
   }
+}
+article.deleted button {
+  display: none;
 }
 </style>
