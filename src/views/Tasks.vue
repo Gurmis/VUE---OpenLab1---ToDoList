@@ -23,6 +23,7 @@
 <script>
 import Task from "../components/Task.vue"
 import CreateNewTask from "../components/CreateNewTask.vue"
+import {id, incrementId} from "../App.vue"
 
 export default {
   name: "Tasks",
@@ -36,7 +37,7 @@ export default {
   methods: {
     addNewTask(taskName) {
       const newId = this.tasks.length + 1
-      this.tasks.push({ id: newId, name: taskName, deleted: false })
+      this.tasks.push({ id: incrementId(), name: taskName, deleted: false })
       console.log(this.tasks)
     },
     removeTask(id) {
@@ -48,7 +49,8 @@ export default {
       })
     },
   },
-  created() {},
+  created() {
+  },
 }
 </script>
 

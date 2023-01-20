@@ -10,7 +10,10 @@ import CreateNewTask from "./components/CreateNewTask.vue"
 import Tasks from "./views/Tasks.vue"
 import DeletedTasks from "./views/DeletedTasks.vue"
 
-let id = 0
+export let id = 0
+export function incrementId(){
+  return ++id
+}
 
 export default {
   name: "App",
