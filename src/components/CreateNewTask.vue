@@ -1,7 +1,7 @@
 <template>
   <form class="addNew" @submit.prevent="addNewTask(newTask)">
-    <input type="text" placeholder="Enter task name" v-model="newTask" />
-    <button type="submit">Add task</button>
+    <input type="text" placeholder="Enter task name" v-model="newTask" @input="newTaskUpdate(newTask)"/>
+    <button class="btn createNewBtn" type="submit">Add task</button>
   </form>
 </template>
 
@@ -19,6 +19,9 @@ export default {
         this.newTask = ""
       }
     },
+    newTaskUpdate(task) {
+      this.emitter.emit('new-task', task)
+    }
   },
 }
 </script>

@@ -99,6 +99,7 @@ aside {
     margin: 0 auto;
     text-align: center;
     margin-bottom: 0.5em;
+    width: 100%;
 
     &:focus {
       border-bottom: 1px solid var(--font1);
@@ -107,8 +108,7 @@ aside {
   }
 }
 
-form button,
-a.routerBtn {
+.btn {
   background: var(--btn1);
   color: var(--font1);
   padding: 8px 10px;
@@ -116,7 +116,7 @@ a.routerBtn {
   border: none;
   margin-top: 20px;
   cursor: pointer;
-  transition: 0.4s;
+  transition: 0.2s;
   width: 100%;
 
   &:hover {

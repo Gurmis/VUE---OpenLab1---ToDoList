@@ -15,7 +15,7 @@
     </section>
     <aside class="container">
       <create-new-task @add-task="addNewTask($event)"></create-new-task>
-      <router-link class="routerBtn" to="/deleted">Show deleted</router-link>
+      <router-link class="routerBtn btn" to="/deleted">Show deleted</router-link>
     </aside>
   </div>
 </template>
@@ -38,7 +38,6 @@ export default {
     addNewTask(taskName) {
       const newId = this.tasks.length + 1
       this.tasks.push({ id: incrementId(), name: taskName, deleted: false })
-      console.log(this.tasks)
     },
     removeTask(id) {
       // this.tasks = this.tasks.filter((task) => (task.id !== id))

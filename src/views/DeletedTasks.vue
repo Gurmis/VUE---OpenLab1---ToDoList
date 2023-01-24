@@ -14,7 +14,7 @@
       </ul>
     </section>
     <aside class="container">
-      <router-link class="routerBtn" to="/">Show active</router-link>
+      <router-link class="routerBtn btn" to="/">Show active</router-link>
     </aside>
   </div>
 </template>

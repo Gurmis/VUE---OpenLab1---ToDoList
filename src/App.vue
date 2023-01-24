@@ -2,11 +2,15 @@
   <main>
     <router-view :tasks="tasks" :taskId="id"></router-view>
   </main>
+  <footer>
+    <mock-controls @get-tasks="getData($event)"/>
+  </footer>
 </template>
 
 <script>
 import Task from "./components/Task.vue"
 import CreateNewTask from "./components/CreateNewTask.vue"
+import MockControls from "./components/MockControls.vue"
 import Tasks from "./views/Tasks.vue"
 import DeletedTasks from "./views/DeletedTasks.vue"
 
@@ -22,6 +26,7 @@ export default {
     CreateNewTask,
     Tasks,
     DeletedTasks,
+    MockControls
   },
   data() {
     return {
@@ -35,6 +40,9 @@ export default {
     }
   },
   methods: {
+    getData(data){
+      this.tasks = data
+    }
   },
   created() {
   },
