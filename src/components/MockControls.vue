@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import axios from "axios"
+import axios from 'axios'
 
 const serverUrl = "https://mockend.com/Gurmis/VUE---OpenLab1---ToDoList/"
 
