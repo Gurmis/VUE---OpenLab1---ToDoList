@@ -11,14 +11,13 @@ const app = createApp(App)
 
 app.config.globalProperties.emitter = emitter
 
-// app.use(axios)
-// .use(mocks, {
-//     routes: {
-//         'GET tasks': true,
-//         // Other routes
-//     }
-// })
-
 app.use(router)
+.use(mocks, {
+    routes: {
+        'GET tasks': true,
+        'POST tasks': true,
+        // Other routes
+    }
+})
 app.mount('#app')
 

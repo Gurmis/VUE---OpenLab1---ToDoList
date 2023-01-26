@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Tasks from '../views/Tasks.vue'
-import DeletedTasks from '../views/DeletedTasks.vue'
+import TasksList from '../views/TasksList.vue'
+import DeletedTasksList from '../views/DeletedTasksList.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Tasks',
-    component: Tasks
+    name: 'TasksList',
+    component: TasksList
   },
   {
     path: '/deleted',
-    name: 'DeletedTasks',
-    component: DeletedTasks
+    name: 'DeletedTasksList',
+    component: DeletedTasksList
   },
 ]
 const router = createRouter({

@@ -3,19 +3,19 @@
     <router-view :tasks="tasks" :taskId="id"></router-view>
   </main>
   <footer>
-    <mock-controls @get-tasks="getData($event)"/>
+    <task-data @get-tasks="getData($event)" />
   </footer>
 </template>
 
 <script>
 import Task from "./components/Task.vue"
 import CreateNewTask from "./components/CreateNewTask.vue"
-import MockControls from "./components/MockControls.vue"
-import Tasks from "./views/Tasks.vue"
-import DeletedTasks from "./views/DeletedTasks.vue"
+import TaskData from "./components/TaskData.vue"
+import TasksList from "./views/TasksList.vue"
+import DeletedTasks from "./views/DeletedTasksList.vue"
 
 export let id = 0
-export function incrementId(){
+export function incrementId() {
   return ++id
 }
 
@@ -24,27 +24,30 @@ export default {
   components: {
     Task,
     CreateNewTask,
-    Tasks,
+    TasksList,
     DeletedTasks,
-    MockControls
+    TaskData,
   },
   data() {
     return {
       newTask: "",
       id: id,
       tasks: [
-        { id: ++id, name: "barber", deleted: false },
-        { id: ++id, name: "buy groceries", deleted: false },
-        { id: ++id, name: "buy dogfood", deleted: false },
+        // { id: ++id, name: "barber", deleted: false },
+        // { id: ++id, name: "buy groceries", deleted: false },
+        // { id: ++id, name: "buy dogfood", deleted: false },
       ],
     }
   },
   methods: {
-    getData(data){
-      this.tasks = data
-    }
+    getData() {
+      this.emitter.on("tasks", (event) => {
+        this.tasks = event
+      })
+    },
   },
-  created() {
+  mounted() {
+    this.getData()
   },
 }
 </script>
