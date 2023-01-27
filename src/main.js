@@ -16,7 +16,8 @@ app.use(router)
     routes: {
         'GET tasks': true,
         'POST tasks': true,
-        // Other routes
+        // 'PUT tasks/id': true,
+        'PUT tasks/1': true,
     }
 })
 app.mount('#app')

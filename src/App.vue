@@ -1,6 +1,6 @@
 <template>
   <main>
-    <router-view :tasks="tasks" :taskId="id"></router-view>
+    <router-view :tasks="tasks"></router-view>
   </main>
   <footer>
     <task-data @get-tasks="getData($event)" />

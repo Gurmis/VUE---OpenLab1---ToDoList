@@ -20,6 +20,7 @@ export default {
   methods: {
     addNewTask(task) {
       if (this.newTask) {
+        console.log(task)
         this.$emit("add-task", task)
         this.emitter.emit("new-task", task)
         this.newTask = ""

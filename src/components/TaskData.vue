@@ -1,6 +1,6 @@
 <template>
   <div class="apiControls">
-    <button class="getBtn btn" @click="getData()">GET</button>
+    <!-- <button class="getBtn btn" @click="getData()">test PUT</button> -->
     <!-- <button class="postBtn btn" @click="postData()">POST</button> -->
   </div>
 </template>
@@ -30,9 +30,7 @@ export default {
     },
     postData() {
       if (this.newTaskName) {
-        const newId = 1
         const newTask = {
-          id: newId,
           name: this.newTaskName,
           deleted: false,
         }
@@ -40,16 +38,32 @@ export default {
           .post(`tasks`, newTask)
           .then((res) => console.log(res))
           .catch((err) => console.log(err))
-        console.log(newTask)
       }
+    },
+    updateData(id) {
+      // axios
+      //   .put(`tasks/${id}`, { deleted: true })
+      //   .then((res) => console.log(res))
+      //   .catch((err) => console.log(err))
+      axios
+        .put(`tasks/1`, { deleted: true })
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err))
     },
   },
   mounted() {
+    this.getData()
+
+    //new task event
     this.emitter.on("new-task", (event) => {
       this.newTaskName = event
       this.postData()
     })
-    this.getData()
+
+    //task remove event
+    this.emitter.on("task-removal", (event) => {
+      this.updateData(event)
+    })
   },
 }
 </script>
