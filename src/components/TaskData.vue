@@ -41,14 +41,14 @@ export default {
       }
     },
     updateData(id) {
-      // axios
-      //   .put(`tasks/${id}`, { deleted: true })
-      //   .then((res) => console.log(res))
-      //   .catch((err) => console.log(err))
       axios
-        .put(`tasks/1`, { deleted: true })
+        .put(`tasks/${id}`, { deleted: true })
         .then((res) => console.log(res))
         .catch((err) => console.log(err))
+      // axios
+      //   .put(`tasks/1`, { deleted: true })
+      //   .then((res) => console.log(res))
+      //   .catch((err) => console.log(err))
     },
   },
   mounted() {
