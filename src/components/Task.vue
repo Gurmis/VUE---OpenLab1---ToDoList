@@ -16,11 +16,9 @@ export default {
   },
   methods: {
     removeTask() {
-      this.$emit("task-removal", this.taskId)
-      this.emitter.emit("task-removal", this.taskId)
+      this.$store.dispatch("removeTask", this.taskId)
     },
   },
-  created() {},
 }
 </script>
 

@@ -3,19 +3,16 @@
     <section class="tasks">
       <ul>
         <li v-for="task in tasks" :key="task.id">
-          <task
-            v-if="!task.deleted"
-            :name="task.name"
-            :taskId="task.id"
-            @task-removal="removeTask($event)"
-          >
+          <task v-if="!task.deleted" :name="task.name" :taskId="task.id">
           </task>
         </li>
       </ul>
     </section>
     <aside class="container">
-      <create-new-task @add-task="addNewTask($event)"></create-new-task>
-      <router-link class="routerBtn btn" to="/deleted">Show deleted</router-link>
+      <create-new-task></create-new-task>
+      <router-link class="routerBtn btn" to="/deleted"
+        >Show deleted</router-link
+      >
     </aside>
   </div>
 </template>
@@ -30,27 +27,12 @@ export default {
     Task,
     CreateNewTask,
   },
-  props: {
-    tasks: Array,
-  },
-  methods: {
-    addNewTask(taskName) {
-      const newId = this.tasks.length + 1
-      this.tasks.push({ id: newId, name: taskName, deleted: false })
+  computed: {
+    tasks() {
+      return this.$store.state.tasks
     },
-    removeTask(id) {
-      this.tasks.forEach((task) => {
-        if (task.id === id) {
-          task.deleted = true
-        }
-      })
-    },
-  },
-  created() {
   },
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

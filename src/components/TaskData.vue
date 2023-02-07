@@ -51,20 +51,20 @@ export default {
       //   .catch((err) => console.log(err))
     },
   },
-  mounted() {
-    this.getData()
+  // mounted() {
+  //   this.getData()
 
-    //new task event
-    this.emitter.on("new-task", (event) => {
-      this.newTaskName = event
-      this.postData()
-    })
+  //   //new task event
+  //   this.emitter.on("new-task", (event) => {
+  //     this.newTaskName = event
+  //     this.postData()
+  //   })
 
-    //task remove event
-    this.emitter.on("task-removal", (event) => {
-      this.updateData(event)
-    })
-  },
+  //   //task remove event
+  //   this.emitter.on("task-removal", (event) => {
+  //     this.updateData(event)
+  //   })
+  // },
 }
 </script>
 

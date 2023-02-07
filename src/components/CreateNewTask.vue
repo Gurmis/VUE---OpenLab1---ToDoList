@@ -4,7 +4,6 @@
       type="text"
       placeholder="Enter task name"
       v-model="newTask"
-      @input="newTaskUpdate(newTask)"
     />
     <button class="btn createNewBtn" type="submit">Add task</button>
   </form>
@@ -20,18 +19,12 @@ export default {
   methods: {
     addNewTask(task) {
       if (this.newTask) {
-        console.log(task)
-        this.$emit("add-task", task)
-        this.emitter.emit("new-task", task)
+        this.$store.dispatch('addTask', task)
         this.newTask = ""
       }
     },
-    newTaskUpdate(task) {},
   },
   created() {
-    this.emitter.on("newTaskReset", () => {
-      this.newTask = ""
-    })
   },
 }
 </script>

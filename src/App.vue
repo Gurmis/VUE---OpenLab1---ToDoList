@@ -1,9 +1,9 @@
 <template>
   <main>
-    <router-view :tasks="tasks"></router-view>
+    <router-view></router-view>
   </main>
   <footer>
-    <task-data @get-tasks="getData($event)" />
+    <!-- <task-data/> -->
   </footer>
 </template>
 
@@ -13,11 +13,6 @@ import CreateNewTask from "./components/CreateNewTask.vue"
 import TaskData from "./components/TaskData.vue"
 import TasksList from "./views/TasksList.vue"
 import DeletedTasks from "./views/DeletedTasksList.vue"
-
-export let id = 0
-export function incrementId() {
-  return ++id
-}
 
 export default {
   name: "App",
@@ -29,25 +24,7 @@ export default {
     TaskData,
   },
   data() {
-    return {
-      newTask: "",
-      id: id,
-      tasks: [
-        // { id: ++id, name: "barber", deleted: false },
-        // { id: ++id, name: "buy groceries", deleted: false },
-        // { id: ++id, name: "buy dogfood", deleted: false },
-      ],
-    }
-  },
-  methods: {
-    getData() {
-      this.emitter.on("tasks", (event) => {
-        this.tasks = event
-      })
-    },
-  },
-  mounted() {
-    this.getData()
+    return {}
   },
 }
 </script>

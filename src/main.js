@@ -5,12 +5,14 @@ import router from './router/router.js'
 import mitt from 'mitt'
 import mocks from './plugins/w/moxios/'
 import axios from "axios"
+import store from './store/store'
 
 const emitter = mitt()
 const app = createApp(App)
 
 app.config.globalProperties.emitter = emitter
 
+app.use(store)
 app.use(router)
 .use(mocks, {
     routes: {

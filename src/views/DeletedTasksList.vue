@@ -7,7 +7,6 @@
             v-if="task.deleted"
             :name="task.name"
             :taskId="task.id"
-            @task-removal="removeTask($event)"
             class="deleted"
           ></task>
         </li>
@@ -27,9 +26,11 @@ export default {
   components: {
     Task,
   },
-  props: {
-    tasks: Array,
-  },
+  computed: {
+    tasks() {
+      return this.$store.state.tasks
+    }
+  }
 }
 </script>
 
