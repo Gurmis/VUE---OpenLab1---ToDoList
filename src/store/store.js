@@ -24,6 +24,13 @@ export default createStore({
         }
       })
     },
+    updateTask(state, updatedTask) {
+      state.tasks.forEach((task) => {
+        if (task.id === updatedTask.id) {
+          task.name = updatedTask.newName
+        }
+      })
+    },
   },
   actions: {
     addTask({ state, commit }, taskName) {
@@ -32,6 +39,9 @@ export default createStore({
     },
     removeTask({ commit }, taskId) {
       commit("removeTask", taskId)
+    },
+    updateTask({ commit }, updatedTask) {
+      commit("updateTask", updatedTask)
     },
   },
 })

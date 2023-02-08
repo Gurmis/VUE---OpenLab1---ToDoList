@@ -30,26 +30,24 @@ export default {
 </script>
 
 <style lang="scss">
-.tasks {
-  li {
-    article {
-      color: var(--font3);
-      font-size: 14px;
-      background: var(--bg3);
-      border-radius: 5px;
-      padding: 0 20px;
-      margin: 12px auto;
-      width: 100%;
-      transition: border-color 0.15s ease-in-out, opacity 0.15s ease-in-out;
-      position: relative;
-      word-break: break-word;
-      display: flex;
-      align-items: center;
 
-      &:hover {
-        background: var(--bg3Hover);
-      }
-    }
-  }
+article {
+  color: var(--font3);
+  font-size: 14px;
+  background: var(--bg3);
+  border-radius: 5px;
+  padding: 0 20px;
+  margin: 12px auto;
+  width: 100%;
+  transition: border-color 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  position: relative;
+  word-break: break-word;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  
+
+ 
 }
 </style>

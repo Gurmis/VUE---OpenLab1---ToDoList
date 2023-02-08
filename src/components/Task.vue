@@ -1,8 +1,9 @@
 <template>
-  <article>
+  <article @click="taskDetails()">
     <p>{{ name }}</p>
+
     <slot></slot>
-    <button @click="removeTask()">x</button>
+    <button @click.stop="removeTask()">x</button>
   </article>
 </template>
 
@@ -18,32 +19,49 @@ export default {
     removeTask() {
       this.$store.dispatch("removeTask", this.taskId)
     },
+    taskDetails() {
+      this.$router.push({ path: `task/${this.taskId}` })
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-p {
-  font-size: 18px;
-  margin-right: 20px;
-}
-button {
-  width: 20px;
-  height: 20px;
-  margin-left: auto;
-  background: rgba(255, 255, 255, 0.703);
-  border: none;
-  border-radius: 2px;
+article {
   cursor: pointer;
-  transition: 0.1s ease;
+
+  p {
+    font-size: 18px;
+    margin-right: 20px;
+    text-align: start;
+  }
+  button {
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+    background: rgba(255, 255, 255, 0.703);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: 0.1s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.603);
+      color: whitesmoke;
+      //   transform: scale(1.1);
+    }
+
+    &.btn {
+      font-size: 1px;
+    }
+  }
+
+  &.deleted button {
+    display: none;
+  }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.603);
-    color: whitesmoke;
-    //   transform: scale(1.1);
+    background: var(--bg3Hover);
   }
-}
-article.deleted button {
-  display: none;
 }
 </style>

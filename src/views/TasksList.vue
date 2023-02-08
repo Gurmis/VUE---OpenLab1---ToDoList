@@ -9,7 +9,7 @@
       </ul>
     </section>
     <aside class="container">
-      <create-new-task></create-new-task>
+      <create-new-task @add-task="addNewTask($event)"></create-new-task>
       <router-link class="routerBtn btn" to="/deleted"
         >Show deleted</router-link
       >
@@ -26,6 +26,11 @@ export default {
   components: {
     Task,
     CreateNewTask,
+  },
+  methods: {
+    addNewTask(task) {
+      this.$store.dispatch('addTask', task)
+    }
   },
   computed: {
     tasks() {

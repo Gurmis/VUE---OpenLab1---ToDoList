@@ -19,7 +19,7 @@ export default {
   methods: {
     addNewTask(task) {
       if (this.newTask) {
-        this.$store.dispatch('addTask', task)
+        this.$emit('add-task', task)
         this.newTask = ""
       }
     },
