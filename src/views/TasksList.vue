@@ -20,6 +20,7 @@
 <script>
 import Task from "../components/Task.vue"
 import CreateNewTask from "../components/CreateNewTask.vue"
+import { mapGetters } from "vuex"
 
 export default {
   name: "Tasks",
@@ -29,13 +30,15 @@ export default {
   },
   methods: {
     addNewTask(task) {
-      this.$store.dispatch('addTask', task)
-    }
+      this.$store.dispatch("addTask", task)
+    },
   },
   computed: {
-    tasks() {
-      return this.$store.state.tasks
-    },
+    ...mapGetters({
+      tasks: "getAllTasks",
+      activeTasks: "getActiveTasks",
+      deletedTasks: "getDeletedTasks",
+    }),
   },
 }
 </script>

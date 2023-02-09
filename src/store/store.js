@@ -44,4 +44,17 @@ export default createStore({
       commit("updateTask", updatedTask)
     },
   },
+
+getters: {
+  getAllTasks(state) {
+    return state.tasks
+  },
+  getActiveTasks(state) {
+    return state.tasks.filter(task => task.deleted === false)
+  },
+  getDeletedTasks(state) {
+    return state.tasks.filter(task => task.deleted === true)
+  },
+
+}
 })

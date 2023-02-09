@@ -2,13 +2,8 @@
   <div>
     <section class="tasks">
       <ul>
-        <li v-for="task in tasks" :key="task.id">
-          <task
-            v-if="task.deleted"
-            :name="task.name"
-            :taskId="task.id"
-            class="deleted"
-          ></task>
+        <li v-for="task in deletedTasks" :key="task.id">
+          <task :name="task.name" :taskId="task.id" class="deleted"></task>
         </li>
       </ul>
     </section>
@@ -20,6 +15,7 @@
 
 <script>
 import Task from "../components/Task.vue"
+import { mapGetters } from "vuex"
 
 export default {
   name: "DeletedTasks",
@@ -27,10 +23,12 @@ export default {
     Task,
   },
   computed: {
-    tasks() {
-      return this.$store.state.tasks
-    }
-  }
+    ...mapGetters({
+      tasks: "getAllTasks",
+      activeTasks: "getActiveTasks",
+      deletedTasks: "getDeletedTasks",
+    }),
+  },
 }
 </script>
 
@@ -38,6 +36,4 @@ export default {
 .deleted {
   text-decoration: line-through;
 }
-
-
 </style>
