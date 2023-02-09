@@ -1,8 +1,11 @@
 <template>
   <div>
+    <header>
+      <p class="activeCount">Incomplete tasks: <span>{{activeCount}}</span></p>
+    </header>
     <section class="tasks">
       <ul>
-        <li v-for="task in tasks" :key="task.id">
+        <li v-for="task in activeTasks" :key="task.id">
           <task v-if="!task.deleted" :name="task.name" :taskId="task.id">
           </task>
         </li>
@@ -39,8 +42,28 @@ export default {
       activeTasks: "getActiveTasks",
       deletedTasks: "getDeletedTasks",
     }),
+    activeCount() {
+      return this.activeTasks.length
+    }
   },
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+header {
+  p {
+    letter-spacing: 0.8px;
+    color: var(--font1);
+    font-size: 15px;
+    text-align: end;
+
+    span {
+      font-size: 17px;
+      background: var(--btn1);
+      border-radius: 50%;
+      padding: 1px 6px;
+    }
+  }
+}
+
+</style>
