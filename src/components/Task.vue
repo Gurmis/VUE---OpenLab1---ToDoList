@@ -44,6 +44,7 @@ article {
     border-radius: 2px;
     cursor: pointer;
     transition: 0.1s ease;
+    padding: 0;
 
     &:hover {
       background: rgba(255, 255, 255, 0.603);
