@@ -6,6 +6,12 @@ import mitt from 'mitt'
 import mocks from './plugins/w/moxios/'
 import axios from "axios"
 import store from './store/store'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faRotateLeft } from '@fortawesome/free-solid-svg-icons'
+
+
+library.add(faRotateLeft)
 
 const emitter = mitt()
 const app = createApp(App)
@@ -22,5 +28,7 @@ app.use(router)
         // 'PUT tasks/1': true,
     }
 })
+
+app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount('#app')
 

@@ -24,6 +24,13 @@ export default createStore({
         }
       })
     },
+    restoreTask(state, id) {
+      state.tasks.forEach((task) => {
+        if (task.id === id) {
+          task.deleted = false
+        }
+      })
+    },
     updateTask(state, updatedTask) {
       state.tasks.forEach((task) => {
         if (task.id === updatedTask.id) {
@@ -39,6 +46,9 @@ export default createStore({
     },
     removeTask({ commit }, taskId) {
       commit("removeTask", taskId)
+    },
+    restoreTask({ commit }, taskId) {
+      commit("restoreTask", taskId)
     },
     updateTask({ commit }, updatedTask) {
       commit("updateTask", updatedTask)

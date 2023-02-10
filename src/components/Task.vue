@@ -3,7 +3,8 @@
     <p>{{ name }}</p>
 
     <slot></slot>
-    <button @click.stop="removeTask()">x</button>
+    <button class="remove" @click.stop="removeTask()">x</button>
+    <button class="restore" @click.stop="restoreTask()"><font-awesome-icon icon="fa-solid fa-rotate-left" /></button>
   </article>
 </template>
 
@@ -18,6 +19,9 @@ export default {
   methods: {
     removeTask() {
       this.$store.dispatch("removeTask", this.taskId)
+    },
+    restoreTask() {
+      this.$store.dispatch("restoreTask", this.taskId)
     },
     taskDetails() {
       this.$router.push({ path: `task/${this.taskId}` })
@@ -57,7 +61,11 @@ article {
     }
   }
 
-  &.deleted button {
+  &.deleted button.remove {
+    display: none;
+  }
+
+  &:not(.deleted) button.restore {
     display: none;
   }
 

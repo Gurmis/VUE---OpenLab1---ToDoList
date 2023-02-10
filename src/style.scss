@@ -107,6 +107,9 @@ aside {
     }
   }
 }
+button {
+  flex-shrink: 0;
+}
 
 .btn {
   background: var(--btn1);
