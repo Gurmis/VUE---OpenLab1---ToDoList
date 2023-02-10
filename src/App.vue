@@ -26,6 +26,18 @@ export default {
   data() {
     return {}
   },
+  methods: {
+    loadTasks(storedTasks) {
+      if (storedTasks) {
+        this.$store.dispatch('loadTasks', storedTasks)
+      }else {
+        this.$store.dispatch('setSample', this.$store.getters.getSample)      
+      }
+    }
+  },
+  created() {
+    this.loadTasks(this.$store.getters.getTasksLS)
+  }
 }
 </script>
 
