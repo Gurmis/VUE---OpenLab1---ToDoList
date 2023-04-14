@@ -13,6 +13,7 @@ import CreateNewTask from "./components/CreateNewTask.vue"
 import TaskData from "./components/TaskData.vue"
 import TasksList from "./views/TasksList.vue"
 import DeletedTasks from "./views/DeletedTasksList.vue"
+import { QBtn } from 'quasar'
 
 export default {
   name: "App",
@@ -22,9 +23,12 @@ export default {
     TasksList,
     DeletedTasks,
     TaskData,
+    QBtn
   },
   data() {
-    return {}
+    return {
+      message: 0
+    }
   },
   methods: {
     loadTasks(storedTasks) {
