@@ -9,6 +9,7 @@ import store from './store/store'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faRotateLeft } from '@fortawesome/free-solid-svg-icons'
+import { Quasar } from 'quasar'
 
 
 library.add(faRotateLeft)
@@ -19,6 +20,7 @@ const app = createApp(App)
 app.config.globalProperties.emitter = emitter
 
 app.use(store)
+app.use(Quasar)
 app.use(router)
 .use(mocks, {
     routes: {
